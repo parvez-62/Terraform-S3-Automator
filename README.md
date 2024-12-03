@@ -56,9 +56,6 @@ This repository demonstrates how to use **Terraform** to automate the provisioni
 The Terraform apply process will create the desired S3 buckets and configurations in your AWS environment. You can verify the created resources in the AWS Management Console.
 
 
-![Screenshot (52)](https://github.com/user-attachments/assets/0bee2338-ddef-444e-adbc-e44273e8a7eb)
-
-
 ## Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request with your ideas or improvements.
 
