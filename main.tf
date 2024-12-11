@@ -34,6 +34,7 @@ resource "aws_s3_object" "index" {
   key          = "index.html"
   source       = "index.html"
   content_type = "text/html"
+  acl          = "public-read"
 }
 
 resource "aws_s3_object" "error" {
@@ -41,6 +42,7 @@ resource "aws_s3_object" "error" {
   key          = "error.html"
   source       = "error.html"
   content_type = "text/html"
+  acl          = "public-read"
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
@@ -53,4 +55,20 @@ resource "aws_s3_bucket_website_configuration" "website" {
   error_document {
     key = "error.html"
   }
+}
+
+resource "aws_s3_bucket_policy" "parvezbucket_policy" {
+  bucket = aws_s3_bucket.parvezbucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action    = "s3:GetObject"
+        Effect    = "Allow"
+        Resource  = "${aws_s3_bucket.parvezbucket.arn}/*"
+        Principal = "*"
+      }
+    ]
+  })
 }
