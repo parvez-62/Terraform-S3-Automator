@@ -1,6 +1,4 @@
-Here's your updated Terraform code with `mybucket` replaced by `parvez-bucket`:
 
-```hcl
 resource "aws_s3_bucket" "parvezbucket" {
   bucket = var.bucketname
 }
@@ -67,7 +65,4 @@ resource "aws_s3_bucket_website_configuration" "website" {
 
   depends_on = [ aws_s3_bucket_acl.example ]
 }
-```
 
-Changes made:
-- Replaced `mybucket` with `parvezbucket` in all relevant places.
