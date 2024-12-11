@@ -1,4 +1,3 @@
-
 resource "aws_s3_bucket" "parvezbucket" {
   bucket = var.bucketname
 }
@@ -31,30 +30,28 @@ resource "aws_s3_bucket_acl" "example" {
 }
 
 resource "aws_s3_object" "index" {
-  bucket = aws_s3_bucket.parvezbucket.id
-  key = "index.html"
-  source = "index.html"
-  acl = "public-read"
+  bucket       = aws_s3_bucket.parvezbucket.id
+  key          = "index.html"
+  source       = "index.html"
   content_type = "text/html"
 }
 
 resource "aws_s3_object" "error" {
-  bucket = aws_s3_bucket.parvezbucket.id
-  key = "error.html"
-  source = "error.html"
-  acl = "public-read"
+  bucket       = aws_s3_bucket.parvezbucket.id
+  key          = "error.html"
+  source       = "error.html"
   content_type = "text/html"
 }
 
 resource "aws_s3_object" "profile" {
-  bucket = aws_s3_bucket.parvezbucket.id
-  key = "profile.png"
-  source = "profile.png"
-  acl = "public-read"
+  bucket       = aws_s3_bucket.parvezbucket.id
+  key          = "profile.png"
+  source       = "profile.png"
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.parvezbucket.id
+
   index_document {
     suffix = "index.html"
   }
@@ -62,7 +59,4 @@ resource "aws_s3_bucket_website_configuration" "website" {
   error_document {
     key = "error.html"
   }
-
-  depends_on = [ aws_s3_bucket_acl.example ]
 }
-
