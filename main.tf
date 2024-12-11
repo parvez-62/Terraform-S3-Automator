@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "parvezbucket" {
   bucket = var.bucketname
 }
 
-resource "aws_s3_bucket_ownership_controls" "example" {
+resource "aws_s3_bucket_ownership_controls" "parvezbucket" {
   bucket = aws_s3_bucket.parvezbucket.id
 
   rule {
@@ -10,7 +10,7 @@ resource "aws_s3_bucket_ownership_controls" "example" {
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "example" {
+resource "aws_s3_bucket_public_access_block" "parvezbucket" {
   bucket = aws_s3_bucket.parvezbucket.id
 
   block_public_acls       = false
@@ -19,10 +19,10 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_acl" "example" {
+resource "aws_s3_bucket_acl" "parvezbucket_acl" {
   depends_on = [
-    aws_s3_bucket_ownership_controls.example,
-    aws_s3_bucket_public_access_block.example,
+    aws_s3_bucket_ownership_controls.parvezbucket,
+    aws_s3_bucket_public_access_block.parvezbucket,
   ]
 
   bucket = aws_s3_bucket.parvezbucket.id
@@ -41,12 +41,6 @@ resource "aws_s3_object" "error" {
   key          = "error.html"
   source       = "error.html"
   content_type = "text/html"
-}
-
-resource "aws_s3_object" "profile" {
-  bucket       = aws_s3_bucket.parvezbucket.id
-  key          = "profile.png"
-  source       = "profile.png"
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
