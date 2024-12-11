@@ -27,10 +27,6 @@ The Terraform S3 Automator is a comprehensive Infrastructure as Code (IaC) solut
   * Automatic website endpoint generation
   * Configure index and error documents
   * Set up public read access
-- **Advanced Configurations**:
-  * Enable versioning for website assets
-  * Implement robust access controls
-  * Configure lifecycle management for optimized storage
 
 ### DevOps Workflow Benefits
 - **Reproducible Infrastructure**: Consistent deployments across environments
